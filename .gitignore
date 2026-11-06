@@ -8,3 +8,7 @@ __pycache__/
 *.duckdb
 *.duckdb.wal
 init.sql
+lab_medallion/target/
+lab_medallion/logs/
+lab_medallion/dbt_packages/
+*.duckdb
