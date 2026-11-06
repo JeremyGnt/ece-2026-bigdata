@@ -1,4 +1,3 @@
-{{ config(severity='warn') }}
 select
     o.order_id,
     o.ordered_at,
@@ -7,4 +6,4 @@ select
 from {{ ref('stg_orders') }} o
 join {{ ref('stg_users') }} u
     on o.user_id = u.user_id
-where o.ordered_at < u.birthdate
+where cast(o.ordered_at as date) < u.birthdate

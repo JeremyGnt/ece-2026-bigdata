@@ -1,11 +1,16 @@
 models:
   - name: stg_users
-    description: Cleaned users data.
+    description: Cleaned and validated users.
     columns:
       - name: user_id
         description: Unique user identifier.
         data_tests:
           - unique
+          - not_null
+
+      - name: username_normalized
+        description: Lowercase username without surrounding spaces.
+        data_tests:
           - not_null
 
       - name: email
@@ -19,9 +24,21 @@ models:
               arguments:
                 values: ["F", "M"]
 
+      - name: birthdate
+        description: Birthdate, NULL when invalid.
+
+      - name: birthdate_is_valid
+        description: Whether the original birthdate is valid.
+        data_tests:
+          - not_null
+
       - name: state
         data_tests:
           - not_null
+          - relationships:
+              arguments:
+                to: ref('states')
+                field: code
 
   - name: stg_orders
     description: Cleaned and deduplicated orders.
@@ -41,6 +58,7 @@ models:
 
       - name: quantity
         data_tests:
+          - not_null
           - accepted_values:
               arguments:
                 values: [1, 2, 3, 4, 5]
