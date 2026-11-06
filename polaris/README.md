@@ -35,3 +35,20 @@ Two principals are configured:
 ## Security
 Credentials are stored in Kubernetes Secrets.
 Generated client credentials are kept outside Git.
+
+## Lab 2 - Govern Iceberg tables with Polaris
+
+- Registered silver.orders without copying data.
+- Verified 2830 orders in Polaris.
+- Created silver.users with 50 records.
+- Tested schema evolution (ADD and DROP COLUMN).
+- Verified read-only permissions for analyst.
+- Created silver_reader with access restricted to silver.
+- Verified that gold was inaccessible to silver_reader.
+- Cleaned up temporary tables and namespaces.
+- Preserved silver.orders for the Trino lab.
+
+Scripts and execution reports are included in this folder.
+
+Polaris governs catalog access but does not replace
+direct S3 storage permissions.
