@@ -7,3 +7,16 @@ lab_medallion:
       threads: 4
       settings:
         TimeZone: UTC
+      extensions:
+        - httpfs
+        - aws
+      secrets:
+        - type: s3
+          provider: credential_chain
+          chain: config
+          profile: default
+          region: us-east-1
+          endpoint: s3.seaweedfs.adm.adaltas.cloud
+          url_style: path
+          use_ssl: true
+          scope: "s3://{{ env_var('LAB_BUCKET_NAME') }}/"
