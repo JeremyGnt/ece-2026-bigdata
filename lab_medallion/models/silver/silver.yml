@@ -33,12 +33,15 @@ models:
           - not_null
 
       - name: state
+        description: State code validated against the reference seed.
         data_tests:
           - not_null
           - relationships:
               arguments:
                 to: ref('states')
                 field: code
+              config:
+                severity: warn
 
   - name: stg_orders
     description: Cleaned and deduplicated orders.

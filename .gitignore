@@ -17,3 +17,6 @@ lab_medallion/logs/
 lab_medallion/dbt_packages/
 *.duckdb
 logs/
+
+# Track dbt reference datasets
+!lab_medallion/seeds/*.csv
