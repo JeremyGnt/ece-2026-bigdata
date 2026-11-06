@@ -16,3 +16,4 @@ lab_medallion/target/
 lab_medallion/logs/
 lab_medallion/dbt_packages/
 *.duckdb
+logs/
